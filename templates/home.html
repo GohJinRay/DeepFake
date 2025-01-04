@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %} Deepfake Detection App {% endblock %}
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection App</title>
+    <!-- External CSS (Bootstrap for responsiveness and custom styles for a sleek design) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #f7b2b2, #f8b8b8);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .action-btns {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .action-btns .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-btns .btn:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card h3 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .feature-card a {
+            font-size: 1.1rem;
+            color: #fff;
+            background-color: #3498db;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-card a:hover {
+            background-color: #2980b9;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            color: #555;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section with Introduction -->
+    <section class="hero-section">
+        <h1>Welcome to Deepfake Detection</h1>
+        <p>Test the accuracy of our deep learning model to detect real vs. deepfake images and voices. <br>Select an option below to begin!</p>
+
+        <div class="action-btns">
+            <a href="/img_upload" class="btn btn-danger">Detect Image</a>
+            <a href="/voice_upload" class="btn btn-success">Detect Voice</a>
+        </div>
+    </section>
+
+    <!-- Feature Cards Section (Image & Voice Upload) -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h3>Image Deepfake Detection</h3>
+                    <p>Upload an image of a human face, and let our model predict whether it's real or a deepfake.</p>
+                    <a href="/img_upload">Go to Image Upload</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h3>Voice Deepfake Detection</h3>
+                    <p>Upload a voice file, and our model will help identify if it's a real voice or deepfake.</p>
+                    <a href="/voice_upload">Go to Voice Upload</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Deepfake Detection Project. All rights reserved. | Made with ❤️ by 3 interns</p>
+    </footer>
+
+    <!-- Bootstrap JS and Optional Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+{% endblock %}

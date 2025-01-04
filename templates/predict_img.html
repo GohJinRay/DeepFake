@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %} Deepfake Image Detection {% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <div class="container my-5">
+        <h2 class="text-center text-primary font-weight-bold">Deepfake Image Detection</h2>
+        <h4 class="text-center text-secondary mb-4">Using Deep Learning to Identify Whether an Image is Real or Deepfake</h4>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- Loop through each prediction result -->
+            {% for prediction in predictions %}
+                <div class="col-md-6 mb-4 text-center">
+                    <!-- Display User Image -->
+                    <div class="border border-primary rounded p-3">
+                        <img src="{{ prediction.user_image }}" alt="User Image" class="img-fluid rounded">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <!-- Display Prediction Result -->
+                    <div class="border border-info rounded p-4">
+                        <h3 class="text-center mb-3">Prediction Results for {{ prediction.filename }}</h3>
+                        <h4 class="text-center">Deepfake Prediction: 
+                            <span class="badge badge-{{ 'danger' if prediction.product == 'Deepfake' else 'success' }}">{{ prediction.product }}</span>
+                        </h4>
+                        <p class="mt-4" style="font-size:1rem;"><strong>Raw Prediction:</strong> <code>{{ prediction.raw_prediction }}</code></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Summary Section -->
+        <div class="mt-5 text-center">
+            <h4 class="text-primary"><u>Summary</u></h4>
+            <h5 class="text-muted">
+                Based on the current set of predictions, there are:
+                <br>
+                <h4>{{ predictions|selectattr('product', 'equalto', 'Deepfake Image')|list|length }}</h4> Deepfake images detected.
+                <br>
+                <h4>{{ predictions|selectattr('product', 'equalto', 'Real Image')|list|length }}</h4> Real images detected.
+            </h5>
+        </div>
+
+        <!-- Future Work Section -->
+        <div id="future-work" class="mt-5">
+            <h4 class="text-center text-primary"><u>Future Work</u></h4><br>
+            <h5 class="text-center">
+                With more time, we can improve on this project in the following ways:<br><br>
+                1. Continue to develop the models to increase performance in both speed and accuracy.<br><br>
+                2. Expand the dataset to include more diverse images and edge cases.<br><br>
+                3. Optimize the deep learning models for faster inference and better generalization.
+            </h5>
+        </div>
+
+        <!-- Footer/Credits Section -->
+        <div class="text-center my-4">
+            <h5 class="text-muted">&nbsp;&nbsp;&nbsp;&nbsp;by 3 interns hehe<br><br></h5>
+        </div>
+
+    </div>
+{% endblock %}

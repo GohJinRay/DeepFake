@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %} Deepfake Video Detection {% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <div class="container my-5">
+        <h2 class="text-center text-primary font-weight-bold">Deepfake Video Detection</h2>
+        <h4 class="text-center text-secondary mb-4">Using Deep Learning to Identify Whether a Video is Real or Deepfake</h4>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- Display Multiple Prediction Results -->
+            {% for prediction in predictions %}
+                <div class="col-md-6 mb-4">
+                    <div class="border border-info rounded p-4">
+                        <h4 class="text-center mb-3">Prediction Results for {{ prediction.filename }}</h4>
+                        <h5 class="text-center">Deepfake Prediction: 
+                            <span class="badge badge-{{ 'danger' if prediction.product == 'Deepfake' else 'success' }}">{{ prediction.product }}</span>
+                        </h5>
+                        <p class="mt-4"><strong>Raw Prediction:</strong> <code>{{ prediction.raw_prediction }}</code></p>
+                    </div>
+                </div>
+
+                <!-- Display Video Player for Each File -->
+                <div class="col-md-6 text-center mb-4">
+                    <div class="border border-primary rounded p-3">
+                        <h4>Video Playback:</h4>
+                        <video controls width="100%">
+                            <source src="{{ prediction.user_video }}" type="video/mp4">
+                            Your browser does not support the video element.
+                        </video>
+                        <p><strong>Filename:</strong> {{ prediction.filename }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Future Work Section -->
+        <div id="future-work" class="mt-5">
+            <h4 class="text-center text-primary"><u>Future Work</u></h4><br>
+            <h5 class="text-center">
+                With more time, we can improve on this project in the following ways:<br><br>
+                1. Continue to develop the models to increase performance in both speed and accuracy.<br><br>
+            </h5>
+        </div>
+
+        <!-- Footer/Credits Section -->
+        <div class="text-center my-4">
+            <h5 class="text-muted">&nbsp;&nbsp;&nbsp;&nbsp;by 3 interns hehe<br><br></h5>
+        </div>
+
+    </div>
+{% endblock %}
